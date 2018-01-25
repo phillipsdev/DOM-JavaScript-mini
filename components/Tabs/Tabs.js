@@ -29,12 +29,12 @@ class TabLink {
   };
 
   select() {
-    this.element.classList.add('Tabs__link-seleced'); // select this link
+    this.element.classList.add('Tabs__link-selected'); // select this link
     this.tabItem.select(); // select the associated tab
   }
 
   deselect() {
-    this.element.classList.remove('Tabs__link-seleced'); // deselect this link
+    this.element.classList.remove('Tabs__link-selected'); // deselect this link
     this.tabItem.deselect(); // deselect the associated tab
   }
 }
