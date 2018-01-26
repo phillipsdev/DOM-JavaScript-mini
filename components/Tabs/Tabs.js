@@ -35,6 +35,7 @@ class TabLink {
 class Tabs {
   constructor(element) {
     this.element = element; // atachecs the dom node to the object as this.element
+    this.activeData = null;
 
     this.links = element.querySelectorAll(".Tabs__link");
     this.links = Array.from(this.links).reduce((obj, link) => {
