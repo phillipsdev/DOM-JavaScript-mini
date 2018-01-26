@@ -15,24 +15,26 @@ class TabItem {
 
 class TabLink {
   constructor(element) {
-    this.element = element;
+    this.element = element; // attach dom element to object
     this.element.addEventListener('click', (event) => {
       event.tabData = this.element.dataset.tab;
     });
   };
 
   select() {
+    // select this link
     this.element.classList.add("Tabs__link-selected");
   }
 
   deselect() {
+    // deselect this link
     this.element.classList.remove("Tabs__link-selected");
   }
 }
 
 class Tabs {
   constructor(element) {
-    this.element = element;
+    this.element = element; // atachecs the dom node to the object as this.element
 
     this.links = element.querySelectorAll(".Tabs__link");
     this.links = Array.from(this.links).reduce((obj, link) => {
@@ -51,16 +53,17 @@ class Tabs {
        this.updateActive(event.tabData);
        event.stopPropagation(); 
       }
-    })
+    });
+  }
 
-    this.activeData = element.querySelector(".Tabs__default");
-    this.activeData = this.activeData ? this.activeData.dataset.tab : null;
+  init() {
+    // select the first link and tab upon initialization
+    this.activeData = this.activeData.dataset.tab;
     this.updateActive(this.activeData);
   }
 
   updateActive(data) {
-    if (data === null) return;
-    if (this.activeData) {
+    if (this.activeData !== null) {
       this.links[this.activeData].deselect();
       this.items[this.activeData].deselect();
     }
